@@ -1,20 +1,8 @@
 import React, { Component } from 'react';
-import OptionsDisplay from './OptionsDisplay';
 import Cart from './Cart';
 import Total from './Total';
-
-// Normalizes string as a slug - a string that is safe to use
-// in both URLs and html attributes
-//import slugify from 'slugify';
-
+import CustomizeList from './CustomizeList'
 import './App.css';
-
-// This object will allow us to
-// easily convert numbers into US dollar values
-const USCurrencyFormat = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD'
-});
 
 class App extends Component {
   constructor(props) {
@@ -50,18 +38,6 @@ class App extends Component {
   };
 
   render() {
-    const features = Object.keys(this.props.features).map((feature, idx) => {
-      return <OptionsDisplay key={idx} feature={this.props.features[feature]} index={idx} name={feature} state={this.state}/>
-    });
-
-    const summary = Object.keys(this.state.selected).map((feature, index) => {
-      const featureHash = feature + '-' + index;
-      return (
-        <Cart key={featureHash} index={index} state={this.state} feature={feature}/>
-      );
-    });
-
-
     return (
       <div className="App">
         <header>
@@ -70,11 +46,11 @@ class App extends Component {
         <main>
           <form className="main__form">
             <h2>Customize your laptop</h2>
-            {features}
+            <CustomizeList features={this.props.features} state={this.state} update={this.updateFeature}/>
           </form>
           <section className="main__summary">
             <h2>Your cart</h2>
-            {summary}
+            <Cart state={this.state}/>
             <Total state={this.state} />
           </section>
         </main>

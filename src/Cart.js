@@ -1,22 +1,24 @@
 import React, { Component}  from 'react';
+import USCurrencyFormat from './USCurrencyFormat';
 
-const USCurrencyFormat = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD'
-});
+
 
 class Cart extends Component {
   render() {
-    const featureHash = this.props.feature + '-' + this.props.index;
-    const selectedOption = this.props.state.selected[this.props.feature];
     return (
-      <div className="summary__option" key={featureHash}>
-        <div className="summary__option__label">{this.props.feature} </div>
-        <div className="summary__option__value">{selectedOption.name}</div>
-        <div className="summary__option__cost">
-          {USCurrencyFormat.format(selectedOption.cost)}
-        </div>
-      </div>
+      Object.keys(this.props.state.selected).map((feature, index) => {
+        const featureHash = feature + '-' + index;
+        const selectedOption = this.props.state.selected[feature]
+        return (
+          <div className="summary__option" key={featureHash}>
+            <div className="summary__option__label">{feature} </div>
+            <div className="summary__option__value">{selectedOption.name}</div>
+            <div className="summary__option__cost">
+              {USCurrencyFormat.format(selectedOption.cost)}
+            </div>
+          </div>  
+        )
+      })
     )
   }
 }

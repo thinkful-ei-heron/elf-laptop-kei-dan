@@ -1,11 +1,6 @@
 import React, { Component} from 'react';
 import slugify from 'slugify';
-
-
-const USCurrencyFormat = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD'
-});
+import USCurrencyFormat from './USCurrencyFormat';
 
 class OptionsDisplay extends Component {
   render() {
@@ -21,7 +16,7 @@ class OptionsDisplay extends Component {
             className="feature__option"
             name={slugify(feature)}
             checked={item.name === this.props.state.selected[feature].name}
-            onChange={e => this.updateFeature(feature, item)}
+            onChange={e => this.props.update(feature, item)}
           />
           <label htmlFor={itemHash} className="feature__label">
             {item.name} ({USCurrencyFormat.format(item.cost)})
@@ -38,7 +33,6 @@ class OptionsDisplay extends Component {
       </fieldset>
     );
   }
-
 }
 
 export default OptionsDisplay;
