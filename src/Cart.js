@@ -1,8 +1,6 @@
 import React, { Component}  from 'react';
 import USCurrencyFormat from './USCurrencyFormat';
 
-
-
 class Cart extends Component {
   render() {
     return (
