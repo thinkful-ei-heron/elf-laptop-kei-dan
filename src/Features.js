@@ -2,46 +2,6 @@ import React from 'react';
 import FeatureItem from './FeatureItem';
 import slugify from 'slugify';
 
-
-//      return (
-//        <fieldset className="feature" key={featureHash}>
-//          <legend className="feature__name">
-//            <h3>{feature}</h3>
-//          </legend>
-//          {options}
-//        </fieldset>
-//      );
-//    });
-//
-//    const features = Object.keys(props.features).map((feature, idx) => {
-//      const featureHash = feature + '-' + idx;
-//      const options = props.features[feature].map(item => {
-//        const itemHash = slugify(JSON.stringify(item));
-//          return (
-//            <FeatureItem itemHash={featureHash}/>
-//          );
-//      });
-//	)}
-//    const features = Object.keys(props.features).map((feature, idx) => {
-//      const featureHash = feature + '-' + idx;
-//      const options = props.features[feature].map(item => {
-//        const itemHash = slugify(JSON.stringify(item));
-//        return (
-//          <FeatureItem />
-//        )
-//      })
-//    })
-//
-//
-//  const features = Object.keys(props.features).map((feature, idx) => {
-//    const featureHash = feature + '-' + idx;
-//    const options = props.features[feature].map(item => {
-//      const itemHash = slugify(JSON.stringify(item));
-//    })
-//      console.log(props.features)
-//      return <FeatureItem itemHash={featureHash}
-//             /> 
-//  })
 function Features (props) {
     const features = Object.keys(props.features).map((feature, idx) => {
       const featureHash = feature + '-' + idx;
