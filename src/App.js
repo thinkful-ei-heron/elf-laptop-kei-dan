@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import Total from './Total';
-import Cart from './Cart';
-import Header from './Header';
-import Features from './Features'
-import Summary from './Summary'
+// Normalizes string as a slug - a string that is safe to use
+// in both URLs and html attributes
 import slugify from 'slugify';
+import Cart from './cart/Cart'
+import Customize from './features/Customize'
 import './App.css';
-
+// This object will allow us to
+// easily convert numbers into US dollar values
+//
 const USCurrencyFormat = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD'
@@ -43,16 +44,18 @@ class App extends Component {
   };
 
   render() {
-
     return (
       <div className="App">
-        <Header />
         <main>
-          <Features features={this.props.features}
-                    updateFeature={this.updateFeature}
-                    selected={this.state.selected}/>
-          <Cart inDollar={USCurrencyFormat} 
-                selected={this.state.selected}/>
+          <Customize features={this.props.features}
+                     inDollar={USCurrencyFormat}
+                     state={this.state}
+                     changeItem={this.updateFeature}
+
+          />
+            <Cart inDollar={USCurrencyFormat}
+                  selected={this.state.selected}
+            />
         </main>
       </div>
     );
