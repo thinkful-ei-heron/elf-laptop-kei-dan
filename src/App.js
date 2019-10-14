@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import slugify from 'slugify';
 import Cart from './cart/Cart'
 import Customize from './features/Customize'
+import Header from './header/Header'
 import './App.css';
 // This object will allow us to
 // easily convert numbers into US dollar values
@@ -46,6 +47,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Header />
         <main>
           <Customize features={this.props.features}
                      inDollar={USCurrencyFormat}
